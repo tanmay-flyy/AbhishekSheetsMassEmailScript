@@ -1,0 +1,10 @@
+function sendMassEmails() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1');
+  var data = sheet.getRange('A:A').getValues();
+  var emailSubject = 'Your Email Subject';
+
+  for (var i = 1; i < data.length; i++) {
+    var emailAddress = data[i][0]; 
+    var emailBody = 'Dear ' + emailAddress + ',\n\nYour email content goes here.';    MailApp.sendEmail(emailAddress, emailSubject, emailBody);
+  }
+}
